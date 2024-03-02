@@ -69,7 +69,7 @@ public:
         val--; 
         
         
-    // Iterate through the characters of the string 's' and set '1's in 'ans' until val becomes 0 or we    //  reach the end of 's'
+    // Iterate through the characters of the string 's' and set '1's in 'ans' until val becomes 0 or we reach the end of 's'
         for (int i = 0; i < n && val > 0; i++)
         {
             // Only update if the current character in 'ans' is '0'

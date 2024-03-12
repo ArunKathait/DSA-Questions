@@ -43,7 +43,7 @@ public:
 };
 
 ****************************************************APPROACH 2nd********************************************************
-  class Solution {// TC--->O(N*LOGN)          SC--->O(26) ~ O(1)
+class Solution {// TC--->O(N*LOGN)          SC--->O(26) ~ O(1)
 public:
     string customSortString(string order, string s) {
         

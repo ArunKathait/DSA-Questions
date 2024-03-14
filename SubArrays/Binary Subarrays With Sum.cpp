@@ -44,7 +44,7 @@ public:
             prefix_sum += nums[i];
             
             // Check if there exists a prefix sum such that (prefix_sum - goal)
-        // If yes, then there exists a subarray with sum equal to goal ending at the current index
+            // If yes, then there exists a subarray with sum equal to goal ending at the current index
             if(ump.find(prefix_sum - goal)!=ump.end())
             {
                 // Increment the answer by the frequency of the prefix sum (prefix_sum - goal)

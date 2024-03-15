@@ -69,7 +69,8 @@ public:
             }
             else
             {
-            // Otherwise,keep popping elements from the stack until we find an element smaller than the             // current element
+            // Otherwise,keep popping elements from the stack until we find an element smaller than the   
+            // current element
                  while(!st.empty() && arr[st.top()] >= arr[i])
                 {
                     st.pop();
@@ -108,7 +109,8 @@ public:
             }
             else
             {
-                // Otherwise, keep popping elements from the stack until we find an element smaller than                 // the current element
+                // Otherwise, keep popping elements from the stack until we find an element smaller than   
+                // the current element
                 while(!st.empty() && arr[st.top()] > arr[i])
                 {
                     st.pop();

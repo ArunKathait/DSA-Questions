@@ -141,7 +141,7 @@ public:
     }
 };
 
-******************************************APPROACH 3rd********************************************************
+******************************************APPROACH 4th********************************************************
 class Solution {//  TC--->O(2N) ~ O(N)         SC--->O(N)(i.e O(1) because we are returning ans vector)
 public:
     vector<int> productExceptSelf(vector<int>& nums) {

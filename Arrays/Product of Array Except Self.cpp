@@ -1,6 +1,6 @@
 **********************************************APPROACH 1st BRUTE FORCE*****************************************
 // NOTE: This will give time limit exceed.
-class Solution {
+class Solution {// TC--->O(N^2)          SC--->O(N) ~ O(1) (i.e we are returning the ans vector)
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
         int n = nums.size();

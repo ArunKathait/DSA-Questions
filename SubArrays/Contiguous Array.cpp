@@ -64,7 +64,7 @@ public:
         // Iterate over all possible starting indices
         for(int i=0;i<n;i++)
         {
-            // Initialize counters for zeros and ones.   
+                // Initialize counters for zeros and ones.   
                 int zeros = 0,ones = 0;
             
             // Iterate over all possible ending indices starting from the current starting index
@@ -78,7 +78,7 @@ public:
                 }
                 else
                 {
-            // If the current element is not 0 (i.e., it's 1 in this case), increment the count of ones.
+                    // If the current element is not 0 (i.e., it's 1 in this case), increment the count of ones.
                     ones++;
                 }
                 
@@ -124,7 +124,7 @@ public:
             // Check if the current prefix sum has been encountered before.
             if(ump.find(prefixSum)!=ump.end())
             {
-        // If yes, update the maximum length using the current index and the index stored in the map.
+                // If yes, update the maximum length using the current index and the index stored in the map.
                 ans = max(ans,i - ump[prefixSum]);
             }
             else

@@ -94,3 +94,44 @@ public:
         return ans;
     }
 };
+
+*********************************************APPROACH 3rd***************************************************
+
+class Solution {// TC--->O(N)               SC--->O(N)
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+        // Vector to store the merged intervals
+        vector<vector<int>>ans;
+        
+        // Traverse through each interval in the input intervals vector
+        for(auto x:intervals)
+        {
+            // If the end of the current interval is less than the start of the new interval,
+            // it means there is no overlap, so we push the current interval to the result.
+            if(x[1] < newInterval[0])
+            {
+                ans.push_back(x);
+            }
+            // If the start of the current interval is greater than the end of the new interval,
+            // it means we have passed the new interval, so we push the new interval to the result
+            // and update the new interval to the current interval for further comparisons.
+            else if(x[0] > newInterval[1])
+            {
+                ans.push_back(newInterval);
+                newInterval = x;
+            }
+            // If there is an overlap between the current interval and the new interval,
+            // we update the start and end of the new interval to cover both intervals.
+            else
+            {
+                newInterval[0] = min(newInterval[0],x[0]);
+                newInterval[1] = max(newInterval[1],x[1]);
+            }
+        }
+        // Push the remaining new interval to the result vector
+        ans.push_back(newInterval);
+        
+        // Return the merged intervals
+        return ans;
+    }
+};

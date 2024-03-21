@@ -71,3 +71,38 @@ public:
         return prev;
     }
 };
+
+****************************************APPROACH 3rd(RECURSIVE APPROACH)***********************************
+
+class Solution {// TC--->O(N)            SC--->O(N)
+public:
+    ListNode* reverseList(ListNode* head) {
+        // Base case: if the head is NULL or the head has only one node
+        // (which means the list is either empty or has only one node),
+        // then there's nothing to reverse, so we simply return the head.
+        if(head == NULL || head->next == NULL)
+        {
+            return head;
+        }
+        
+        // Recursively reverse the sublist starting from the node next to the current head.
+        ListNode *newHead = reverseList(head->next);
+        
+        // At this point, 'newHead' will point to the last node of the original list,
+        // which will become the new head of the reversed list.
+    
+        // Get the node that is currently next to the head.
+        ListNode *front = head->next;
+        
+        // Reverse the direction of the next pointer of the node next to the current head
+        // so it points back to the current head, effectively reversing the linkage.
+        front->next = head;
+        
+        // Reverse the direction of the next pointer of the current head,
+        // so it points to NULL (end of the reversed list).
+        head->next = NULL;
+        
+        // Return the new head of the reversed list.
+        return newHead;
+    }
+};

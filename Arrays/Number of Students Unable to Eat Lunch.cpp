@@ -23,38 +23,38 @@ public:
         // Iterate through each sandwich preference
         for(auto it:sandwiches)
         {
-            // If the sandwich preference is 1
+            // If the current sandwich preference is type 1
             if(it == 1)
             {   
-                // If no students prefer sandwich type 1
+                // If there are no students left who prefer type 1 sandwiches
                 if(student_1 == 0)
                 {
-                    // Return the remaining count of students preferring sandwich type 0
+                    // Return the count of students preferring type 0 sandwiches who couldn't get their sandwiches
                     return student_0; 
                 }
                 else
                 {
-                    // Decrease the count of students preferring sandwich type 1
+                    // Serve a type 1 sandwich to a student by decrementing the count of students preferring type 1 sandwiches
                     student_1--; 
                 }
             }
-            else// If the sandwich preference is 0
+            else// If the current sandwich preference is type 0
             {        
-                // If no students prefer sandwich type 0
+                // If there are no students left who prefer type 0 sandwiches
                 if(student_0 == 0)
                 {
-                    // Return the remaining count of students preferring sandwich type 1
+                    // Return the count of students preferring type 1 sandwiches who couldn't get their sandwiches
                     return student_1;
                 }
                 else
                 {
-                    // Decrease the count of students preferring sandwich type 0
+                    // Serve a type 0 sandwich to a student by decrementing the count of students preferring type 0 sandwiches
                     student_0--;
                 }
             }
         }
         
-        // Return 0 if all students have been accounted for
+        // If all students get their sandwiches, return 0
         return 0;
     }
 };

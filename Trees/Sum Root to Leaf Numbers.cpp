@@ -15,7 +15,7 @@ public:
         // Update the current sum by multiplying it by 10 and adding the value of the current node
         currentSum = currentSum*10 + root->val;
         
-    //If the current node is a leaf node (both left and right children are null),return the current sum
+        //If the current node is a leaf node (both left and right children are null),return the current sum
         if(root->left == NULL && root->right == NULL)
         {
             return currentSum;
@@ -68,7 +68,7 @@ public:
             // Update the current sum by multiplying it by 10 and adding the value of the current node
             currentSum = currentSum * 10 + root->val;
             
-            // If the current node is a leaf node (both left and right children are null), add the                   // current sum to the total sum
+        // If the current node is a leaf node (both left and right children are null), add the current sum to the total sum
             if(root->left == NULL && root->right == NULL)
             {
                 totalSum += currentSum;

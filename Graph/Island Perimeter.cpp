@@ -47,7 +47,7 @@ public:
 };
 *****************************************APPROACH 1st(USING DFS)****************************************************
 
-class Solution {// TC--->O(m*n)           SC--->O(m*n)
+class Solution {// TC--->O(n*m)           SC--->O(n*m)
 public:
     // Function to perform Depth-First Search (DFS) to calculate perimeter
     void dfs(vector<vector<int>>&grid,int i,int j,int n,int m,int &perimeter)
@@ -104,7 +104,7 @@ public:
     }
 };
 ************************************************APPROACH 2nd(USING BFS)***********************************************
-class Solution {// TC--->O(m*n)              SC--->O(m*n)
+class Solution {// TC--->O(n*m)              SC--->O(n*m)
 public:
     
     // Function to perform Breadth-First Search (BFS) to calculate perimeter

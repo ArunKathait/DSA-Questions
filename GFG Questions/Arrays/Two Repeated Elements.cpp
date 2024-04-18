@@ -4,33 +4,41 @@ class Solution {// TC--->O(N)       SC--->O(N)
 public:
     // Function to find two repeated elements.
     vector<int> twoRepeated (int arr[], int n) {
+        
         // Vector to store the result
         vector<int> ans;
+        
         // Unordered map to count occurrences of elements
         unordered_map<int,int> ump;
         
         // Count occurrences of elements in the array
-        for(int i = 0; i < n + 2; i++) {
+        for(int i = 0; i < n + 2; i++) 
+        {
             ump[arr[i]]++;
         }
         
         // Iterate through the unordered map
-        for(auto it : ump) {
+        for(auto it : ump)
+            {
             // If an element occurs twice, add it to the result vector
-            if(it.second == 2) {
+            if(it.second == 2) 
+            {
                 ans.push_back(it.first);
             }
         }
         
         // Iterate through the array from the end
-        for(int i = n + 2; i >= 0; i--) {
+        for(int i = n + 2; i >= 0; i--) 
+        {
             // If the current element matches the first element in the result vector, reverse the vector and return
-            if(arr[i] == ans[0]) {
+            if(arr[i] == ans[0]) 
+            {
                 reverse(ans.begin(), ans.end());
                 return ans;
             }
             // If the current element matches the second element in the result vector, return
-            if(arr[i] == ans[1]) {
+            if(arr[i] == ans[1])
+            {
                 return ans;
             }
         }
@@ -43,17 +51,22 @@ public:
 public:
     // Function to find two repeated elements.
     vector<int> twoRepeated (int arr[], int n) {
+        
         // Create an unordered map to store the frequency of each element
         unordered_map<int,int> ump;
+        
         // Create a vector to store the result
         vector<int> ans;
         
         // Iterate through the array
-        for(int i = 0; i < n + 2; i++) {
+        for(int i = 0; i < n + 2; i++)
+            {
             // Increment the count of the current element in the unordered map
             ump[arr[i]]++;
+                
             // If the count of the current element reaches 2, add it to the result vector
-            if(ump[arr[i]] == 2) {
+            if(ump[arr[i]] == 2) 
+            {
                 ans.push_back(arr[i]);
             }
         }
@@ -69,6 +82,7 @@ public:
   public:
     //Function to find two repeated elements.
     vector<int> twoRepeated (int arr[], int n) {
+        
          // Vector to store the two repeated elements
         vector<int>ans;
         
@@ -82,7 +96,7 @@ public:
             if(arr[index] < 0)
             {
                 // If it is negative, it means this element has been encountered before, so it's a duplicate
-            // Add the index to the result vector
+                // Add the index to the result vector
                 ans.push_back(index);
             }
             else

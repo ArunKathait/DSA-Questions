@@ -6,7 +6,7 @@ class Solution{
 	    vector<int>ans;
 	    
 	    // Create an unordered_set 'set' containing all elements of array 'b'
-        // This allows fast O(1) lookups to check if an element from 'a' is in 'b'
+            // This allows fast O(1) lookups to check if an element from 'a' is in 'b'
 	    unordered_set<int>set(b,b+m);
 	    
 	    // Iterate through each element of array 'a'

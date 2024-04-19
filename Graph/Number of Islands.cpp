@@ -158,7 +158,7 @@ public:
 
 /*
 NOTE:
-
+The below code lines means----->
 if (newRow < 0 || newRow >= n || newCol < 0 || newCol >= m || grid[newRow][newCol] != '1')
 {
     // If the neighboring cell is out of bounds or not part of an unvisited island:

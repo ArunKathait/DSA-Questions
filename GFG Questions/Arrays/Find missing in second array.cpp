@@ -1,5 +1,4 @@
-
-  class Solution{
+class Solution{
 	public:
 	vector<int> findMissing(int a[], int b[], int n, int m) 
 	{ 

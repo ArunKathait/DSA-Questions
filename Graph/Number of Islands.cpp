@@ -67,6 +67,21 @@ public:
     }
 };
 
+/* 
+NOTE:
+        if(row<0 || row>=n || col<0 || col>=m || grid[row][col] != '1' )
+        {
+            
+            return ;
+        }
+
+This is base condition means if we reach any invalid index and invalid cell then we simply return our dfs function(i.e exit).
+
+Otherwise we just visit that cell in the matrix.
+
+*/
+
+
 
 **********************************************APPROACH 2ND (USING BFS)*****************************************
 

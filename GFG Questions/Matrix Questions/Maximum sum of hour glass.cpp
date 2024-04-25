@@ -19,7 +19,8 @@ class Solution {// TC--->O(n*m)             SC--->O(1)
             int sum = 0;
             // Iterate through the columns of the matrix starting from the second column and ending at the second-to-last column
             for(int j=1;j<m-1;j++)
-            {// Calculate the sum of the current cell and its surrounding cells
+            {
+              // Calculate the sum of the current cell and its surrounding cells
                 sum = mat[i][j] +     // Current cell
                  mat[i-1][j] +        // Cell one row above
                  mat[i-2][j] +        // Cell two rows above
@@ -57,6 +58,7 @@ class Solution {// TC--->O(n*m)          SC--->O(1)
         for(int i=1;i<n-1;i++)
         {
             int sum = 0;
+          
             // Loop through the columns of the matrix (excluding the first and last columns)
             for(int j=1;j<m-1;j++)
             {

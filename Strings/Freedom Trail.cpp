@@ -153,7 +153,7 @@ public:
         if(dp[ringIndex][keyIndex] != -1) 
         {
             
-        // Return the precalculated value stored in 'dp' for the current state (ringIndex, keyIndex).
+            // Return the precalculated value stored in 'dp' for the current state (ringIndex, keyIndex).
             return dp[ringIndex][keyIndex];
         }
         

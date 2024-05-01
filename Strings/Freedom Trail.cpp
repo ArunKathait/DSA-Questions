@@ -127,7 +127,7 @@ public:
     }
 };
 
-***********************************APPROACH 3rd(USING DP GLOBALLY)*******************************************
+***********************************APPROACH 3rd(WITHOUT USING DP GLOBALLY)*******************************************
 
 class Solution {// Here we do not assign dp globally
 public:

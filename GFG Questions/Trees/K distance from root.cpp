@@ -1,3 +1,5 @@
+*********************************************APPROACH 1st(USING DFS)*************************************************
+
 class Solution // TC--->O(N)             SC--->O(N)
 {
     public:
@@ -43,3 +45,64 @@ class Solution // TC--->O(N)             SC--->O(N)
       return ans;
     }
 };
+
+*****************************************************APPROACH 2nd(USING BFS)****************************************
+
+class Solution // TC--->O(N)            SC--->O(N)
+{
+    public:
+    // Function to find all nodes at distance 'k' from the given root node
+    vector<int> Kdistance(struct Node *root, int k)
+    {
+        // Vector to store nodes at distance 'k' from the root
+        vector<int>ans;
+        
+        // Queue to perform level order traversal
+        queue<Node*>q;
+        
+        // Initialize the level to 0
+        int level = 0;
+        
+        // Push the root node into the queue
+        q.push(root);
+        
+        // Continue the traversal until the queue is not empty
+        while(!q.empty())
+        {
+            // Get the current size of the queue (number of nodes at this level)
+            int size = q.size();
+            
+            // Traverse all nodes at the current level
+            while(size--)
+            {
+                // Get the front node of the queue
+                auto node = q.front();
+                q.pop();
+            
+               // If the current level matches the target distance 'k',
+               // add the data of the current node to the result vector
+               if(level == k)
+               {
+                  ans.push_back(node->data);
+               }
+            
+               // Enqueue the left child if it exists
+               if(node->left != NULL)
+               {
+                   q.push(node->left);
+               }
+            
+               // Enqueue the right child if it exists
+               if(node->right != NULL)
+               {
+                   q.push(node->right);
+               }
+            }
+            // Move to the next level
+            level++;
+        }
+        
+        // Return the vector containing nodes at distance 'k' from the root
+        return ans;
+    }
+}; 

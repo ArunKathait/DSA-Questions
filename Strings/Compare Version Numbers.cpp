@@ -21,7 +21,6 @@ public:
             string temp = s.substr(start,end-start);
                  
             // Convert the substring to an integer and push it to the vector
-
             ans.push_back(stoi(temp));
             
             // Update the start index for the next iteration

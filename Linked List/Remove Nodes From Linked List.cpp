@@ -7,7 +7,7 @@ public:
         // Create a stack to store nodes in decreasing order of values
         stack<ListNode*>st;
         
-         // Temporary pointer to traverse the linked list
+        // Temporary pointer to traverse the linked list
         ListNode *temp = head;
         
         // Traverse the linked list

@@ -122,11 +122,13 @@ public:
         int n = gas.size();
         
         // Calculate the total gas and cost by summing up all elements in the respective vectors
+        
         // Total gas available
         int gasSum = 0;
         
         // Total cost of travel
         int costSum = 0;
+        
         for(int i=0;i<n;i++)
         {
             // Accumulate gas

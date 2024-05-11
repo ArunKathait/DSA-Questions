@@ -37,6 +37,7 @@ public:
                 
                 // Store the cost of moving from current station (j) to next station
                 int costForMovingfromThisj = cost[j];
+                
                 // Move to the next station in a circular manner
                 j = (j+1)%n;
                 

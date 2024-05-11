@@ -46,7 +46,8 @@ public:
         // Get the size of the input array
         int n = arr.size();
         
-       // Declare a max-heap priority queue to store fractions along with their corresponding numerators and denominators priority_queue<pair<double,pair<int,int>>>pq;
+        // Declare a max-heap priority queue to store fractions along with their corresponding numerators and denominators
+        priority_queue<pair<double,pair<int,int>>>pq;
         
         // Generate all possible fractions using pairs of elements from the input array
         for(int i=0;i<n;i++)

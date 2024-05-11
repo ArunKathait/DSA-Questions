@@ -93,7 +93,7 @@ public:
             totalSum += gas[i] - cost[i];
             
             // If the gas balance becomes negative, the current station cannot be the starting point
-        // Move to the next station as a possible starting point and reset the gas balance
+            // Move to the next station as a possible starting point and reset the gas balance
             if(totalSum < 0)
             {
                  // Update the valid starting index

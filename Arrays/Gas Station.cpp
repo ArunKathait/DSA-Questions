@@ -122,7 +122,6 @@ public:
         int n = gas.size();
         
         // Calculate the total gas and cost by summing up all elements in the respective vectors
-        
         // Total gas available
         int gasSum = 0;
         

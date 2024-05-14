@@ -58,8 +58,8 @@ public:
             }
         }
         
-        //Calculate the final score of the grid
-         // Initialize the final score
+        // Calculate the final score of the grid
+        // Initialize the final score
         int ans = 0;
         
         // Iterate through each cell in the grid

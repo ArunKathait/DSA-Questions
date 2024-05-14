@@ -29,7 +29,6 @@ public:
                 if(worker_wage >= min_wage[worker])
                 {
                     // If yes, add the wage to the group
-
                     group.push_back(worker_wage);
                 }
             }

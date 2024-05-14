@@ -84,7 +84,7 @@ public:
 
 ***********************************************APPROACH 2nd(WITHOUT MODIFYING THE MATRIX)***************************
 
-class Solution {// TC--->O(N*M)              SC--->O(1)
+class Solution {// TC--->O(N*M)              SC--->O(1)--->Here we are not modifying the matrix
 public:
     int matrixScore(vector<vector<int>>& grid) {
         

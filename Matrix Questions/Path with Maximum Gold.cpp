@@ -1,10 +1,10 @@
 class Solution {// TC--->O(m*n * 4^(cells with gold))           SC--->O(cells with gold) 
 public:
-    // Arrays to represent the four possible directions: up, right, down, left
+     // Arrays to represent the four possible directions: up, right, down, left
      vector<int>delRow = {-1,0,1,0};// Changes in row
      vector<int>delCol = {0,1,0,-1};// Changes in column
     
-  // This function performs Depth First Search (DFS) to explore the grid and find the maximum amount of   // gold
+    // This function performs Depth First Search (DFS) to explore the grid and find the maximum amount of gold
     int dfs(vector<vector<int>>&grid,int row,int col,int n,int m)
     {
         // Base case: If the current cell is out of bounds or has no gold, return 0
@@ -26,14 +26,14 @@ public:
             int newRow = delRow[k] + row;
             int newCol = delCol[k] + col;
             
-    // Recursively call DFS on each valid neighbor and update maxGold with the maximum value obtained
+            // Recursively call DFS on each valid neighbor and update maxGold with the maximum value obtained
             maxGold = max(maxGold,dfs(grid,newRow,newCol,n,m));
         }
         
         // Restore the original gold value of the current cell
         grid[row][col] = originalGoldValue;
         
-        // Return the sum of the original gold value of the current cell and the maximum gold obtainable         // from its neighbors
+        // Return the sum of the original gold value of the current cell and the maximum gold obtainable from its neighbors
         return originalGoldValue + maxGold;
     }
     

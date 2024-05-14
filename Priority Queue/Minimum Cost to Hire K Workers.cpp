@@ -74,7 +74,7 @@ public:
 *********************************************APPROACH 2nd(BETTER APPROACH)*********************************************
 
 
-  class Solution {// TC--->O(nlogn + klogk + n*log(k))                SC--->O(n+k)
+class Solution {// TC--->O(nlogn + klogk + n*log(k))                SC--->O(n+k)
 public:
     double mincostToHireWorkers(vector<int>& quality, vector<int>& wage, int k) {
         

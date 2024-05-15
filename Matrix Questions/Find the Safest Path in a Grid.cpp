@@ -67,7 +67,6 @@ public:
     int maximumSafenessFactor(vector<vector<int>>& grid) {
         int n = grid.size();
         
-        
        // 2D array to store the distance to the nearest thief for each cell
         vector<vector<int>>distanceNearestThief(n,vector<int>(n,-1));
         

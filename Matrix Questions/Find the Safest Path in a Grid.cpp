@@ -154,7 +154,7 @@ public:
 
 /* NOTE:
 
-        There are following steps are required to solve this problem;
+        There are following steps are required to solve this problem:
         
         (1) Pre-Calculate ManHattan Distance of each cell.
         (2) Apply binary search on each safeness Factor in range---> low = 0 and high = INT_MAX(We can do high = 400 because in constraints grid.lenght is upto 400) 

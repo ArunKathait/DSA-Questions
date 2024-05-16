@@ -3,6 +3,7 @@ class Solution {// TC--->O(N)               SC--->O(N)
 public:
     // Function to evaluate a binary tree based on node values
     bool evaluateTree(TreeNode* root) {
+        
         // Check if the current node is a leaf node (no children)
         if(root->left == NULL && root->right == NULL)
         {

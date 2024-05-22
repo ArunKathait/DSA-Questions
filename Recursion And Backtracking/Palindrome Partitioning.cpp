@@ -40,6 +40,7 @@ public:
             {
                 // If it is, add this substring to the current path
                 path.push_back(s.substr(index,i-index+1));
+                
                 // Recursively solve for the remaining substring
                 solve(i+1,s,path,ans,n);
                 

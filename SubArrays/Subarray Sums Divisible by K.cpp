@@ -76,3 +76,52 @@ public:
 
 ******************************************APPROACH 3rd(BETTER APPROACH)********************************************
 
+class Solution {// TC--->O(N)                  SC--->O(N)
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+        // Get the size of the input vector 'nums'
+        int n = nums.size();
+        
+        // Create an unordered map to store remainders and their counts
+        unordered_map<int,int>ump;
+        
+        // Initialize the map with 0 remainder having a count of 1
+        ump[0] = 1;
+        
+        // Variable to store the prefix sum
+        int prefixSum = 0;
+        
+        // Variable to store the count of subarrays divisible by k
+        int ans = 0;
+        
+        // Loop through each element in the vector
+        for(int i=0;i<nums.size();i++)
+        {
+            // Add the current element to the prefix sum
+            prefixSum += nums[i];
+            
+            // Calculate the remainder when prefix sum is divided by k
+            int remainder = prefixSum%k;
+            
+            // If the remainder is negative
+            if(remainder < 0)
+            {
+                // Adjust the remainder to be positive
+                remainder += k;
+            }
+            
+            // If the remainder is already in the map
+            if(ump.find(remainder) != ump.end())
+            {
+                // Add the count of this remainder to the answer
+                ans += ump[remainder];
+            }
+            
+            // Increment the count of this remainder in the map
+            ump[remainder]++;
+        }
+        
+        // Return the total count of subarrays divisible by k
+        return ans;
+    }
+};

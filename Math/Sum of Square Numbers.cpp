@@ -1,6 +1,6 @@
 ****************************************************************APPROACH 1st(USING BRUTE FORCE)*************************************************************
 
-// NOTE: This will Time Limit Exceeded.
+// NOTE: This will give Time Limit Exceeded.
 
 class Solution {// TC--->O(N^2)                 SC--->O(1)
 public:

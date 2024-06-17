@@ -50,7 +50,7 @@ public:
                 return true;
             }
             // If the sum of squares is less than c, increment the low pointer to increase the sum
-            else if(low*low + high*high < c)
+            else if(currentSum < c)
             {
                 low++;
             }

@@ -100,7 +100,7 @@ public:
             nextVal = head->val;
             
             // Check if the current node is a critical point
-            if(prevVal != 0 && currentVal != 0 && nextVal != 0 && ((prevVal > currentVal && currentVal <                nextVal) || (prevVal < currentVal && currentVal > nextVal)))
+            if(prevVal != 0 && currentVal != 0 && nextVal != 0 && ((prevVal > currentVal && currentVal < nextVal) || (prevVal < currentVal && currentVal > nextVal)))
             {
                 // If this is the first critical point encountered
                 if(firstCriticalPos == 0)

@@ -2,7 +2,7 @@
 class Solution {// TC--->O(time)             SC--->O(1)
 public:
     int passThePillow(int n, int time) {
-    // Initialize the flag to indicate the direction of passing (true for forward, false for backward)
+        // Initialize the flag to indicate the direction of passing (true for forward, false for backward)
         bool flag = true;
         
         // Initialize the starting position (1-based index)

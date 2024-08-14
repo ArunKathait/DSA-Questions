@@ -89,7 +89,7 @@ public:
 class Solution {// TC--->O(NlogN + NlogM)                     SC--->O(1)
 public:
     // Function to count the number of pairs with a distance less than or equal to 'distance'
-    int sliding(vector<int>&nums,int distance)
+    int slidingWindowCount(vector<int>&nums,int distance)
     {
         // Start of the sliding window
         int i = 0;
@@ -140,7 +140,7 @@ public:
             int mid = low + (high - low)/2;
             
             // Count the number of pairs with distance less than or equal to 'mid'
-            int count = sliding(nums,mid);
+            int count = slidingWindowCount(nums,mid);
             
             // If the count of such pairs is less than k, search in the higher half
             if(count < k)

@@ -88,8 +88,8 @@ public:
                 }
                 else
                 {
-  // If there is exactly one zero, set the corresponding element in the result array to the product of all  
-  // non-zero elements
+                    // If there is exactly one zero, set the corresponding element in the result array to the product of all  
+                    // non-zero elements
                     ans[i] = product_without_zeros;
                 }
             }

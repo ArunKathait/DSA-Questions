@@ -62,7 +62,7 @@ public:
                 int val = expression[i] - '0';
                 
                 // Build the denominator
-                currentDenominator = currentDenominator * 10 + val;
+                currentDenominator = (currentDenominator * 10) + val;
                 i++;
             }
             

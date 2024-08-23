@@ -46,7 +46,6 @@ public:
             }
             
             // Skip the '/' character separating numerator and denominator
-
             i++;
             
             // Convert the numerator to negative if needed

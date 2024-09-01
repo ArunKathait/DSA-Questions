@@ -72,7 +72,7 @@ public:
        If we want to convert 1D Array to 2D Array then we just do below steps:
        For Row-----> i/col;
        For Col-----> i%col;
-       where i is index of 1D Array and col is column which is given (i.e col we have to make in new 2 Array)
+       where i is index of 1D Array and col is column which is given (i.e col we have to make in new 2D Array)
 
 */
 

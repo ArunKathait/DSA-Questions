@@ -166,3 +166,51 @@ public:
         return maxArea;
     }
 };
+
+
+********************************************APPROACH 3rd(MINOR CHANGES IN ABOVE)************************************
+
+class Solution {// TC--->O(N)                                                SC--->O(N)
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        stack<int> st; // Stack to store indices of histogram bars
+        
+        int n = heights.size(); // Number of bars in the histogram
+        
+        int maxArea = 0; // Variable to store the maximum rectangular area found
+
+        // Traverse through each bar in the histogram
+        for (int i = 0; i < n; i++)
+        {
+            // While the stack is not empty and the current bar height is less than the bar height at the index on top of the stack
+            while (!st.empty() && heights[st.top()] > heights[i])
+            {
+                int element = heights[st.top()]; // Height of the bar at the top index of the stack
+                st.pop(); // Remove the index from the stack as this bar will now be processed
+                
+                int nse = i; // Next Smaller Element index (current index `i` serves as the boundary)
+                int pse = st.empty() ? -1 : st.top(); // Previous Smaller Element index (top of the stack or -1 if the stack is empty)
+                
+                // Calculate the width of the rectangle using the distance between the Next Smaller Element (nse) and Previous Smaller Element (pse)
+                maxArea = max(maxArea, (element * (nse - pse - 1)));
+            }
+            
+            st.push(i); // Push the current index onto the stack
+        }
+
+        // Process remaining indices in the stack after the main loop
+        while (!st.empty())
+        {
+            int nse = n; // Next Smaller Element index (end of the histogram)
+            int element = heights[st.top()]; // Height of the bar at the top index of the stack
+            st.pop(); // Remove the index from the stack as this bar will now be processed
+            
+            int pse = st.empty() ? -1 : st.top(); // Previous Smaller Element index (top of the stack or -1 if the stack is empty)
+            
+            // Calculate the width of the rectangle from the Previous Smaller Element (pse) to the end of the histogram (nse)
+            maxArea = max(maxArea, (element * (nse - pse - 1)));
+        }
+
+        return maxArea; // Return the maximum rectangular area found
+    }
+};

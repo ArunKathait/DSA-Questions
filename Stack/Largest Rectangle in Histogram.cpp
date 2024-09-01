@@ -112,7 +112,7 @@ public:
         // Traverse through each bar of the histogram
         for(int i = 0; i < n; i++) 
         {
-            // While the stack is not empty and the current bar height is less than the bar height at the top             // index of the stack
+            // While the stack is not empty and the current bar height is less than the bar height at the top index of the stack
             // (this means we've found a right boundary for the bar at the top of the stack)
             while (!st.empty() && heights[st.top()] > heights[i]) 
             {

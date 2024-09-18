@@ -71,3 +71,64 @@ public:
 
 ********************************************APPROACH 2nd(OPTIMAL APPROACH)**********************************************
 
+
+class Solution {// TC--->O(N)                         SC--->O(N)
+public:
+    // Function to recursively build the binary tree from preorder and inorder traversals.
+    // 'preorder' - vector representing the preorder traversal of the tree.
+    // 'inorder' - vector representing the inorder traversal of the tree.
+    // 'start' and 'end' define the current range in the inorder array we are working on.
+    // 'idx' is a reference variable that keeps track of the current index in the preorder vector.
+    // 'ump' is an unordered_map storing the index of each value in the inorder vector.
+    TreeNode *solve(vector<int>&preorder,vector<int>&inorder,int start,int end,int &idx,unordered_map<int,int>&ump)
+    {
+        // Base case: If the range is invalid, return NULL, as no node exists here.
+        if(start > end)
+        {
+            return NULL;
+        }
+        
+         // Get the current root value from the preorder array (preorder traversal always starts with the root).
+        int rootVal = preorder[idx];
+        
+        // Move to the next index in preorder.
+        idx++;
+        
+        // Find the index of this root value in the inorder array using the map 'ump'.
+        int InorderIdx = ump[rootVal];
+        
+        // Create a new TreeNode with the root value.
+        TreeNode *root = new TreeNode(rootVal);
+        
+        // Recursively build the left and right subtrees.
+        // The left subtree is in the range [start, InorderIdx-1] in the inorder array.
+        root->left = solve(preorder,inorder,start,InorderIdx-1,idx,ump);
+        
+        // The right subtree is in the range [InorderIdx+1, end] in the inorder array.
+        root->right = solve(preorder,inorder,InorderIdx+1,end,idx,ump);
+        
+        // Return the constructed root node.
+        return root;
+    }
+    
+    // Function to initiate building the binary tree.
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        // Create a map to store the index of each element in the inorder array.
+        unordered_map<int,int>ump;
+        
+        // Get the size of the inorder array.
+        int n = inorder.size();
+        
+        // Populate the unordered_map 'ump' with the element value as the key and its index as the value.
+        for(int i=0;i<n;i++)
+        {
+            ump[inorder[i]] = i;
+        }
+        
+        // Initialize 'idx' to track the current index in the preorder array.
+        int idx = 0;
+        
+        // Call the 'solve' function to recursively build the tree.
+        return solve(preorder,inorder,0,n-1,idx,ump);
+    }
+};

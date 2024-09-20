@@ -20,6 +20,7 @@ public:
             // Recursively check the left subtree:
             // The left child's value must be less than the current node's value (so max becomes root->val)
             bool left = isBST(root->left,min,root->val);
+            
             // Recursively check the right subtree:
             // The right child's value must be greater than the current node's value (so min becomes root->val)
             bool right = isBST(root->right,root->val,max);

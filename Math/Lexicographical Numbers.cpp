@@ -35,7 +35,7 @@ public:
     }
 };
 
-****************************************************APPROACH 2nd(GOOD APPROACH)*************************************
+****************************************************APPROACH 2nd(BETTER APPROACH)*************************************
 
 class Solution {// TC--->O(N)                         SC--->O(number of digits in n) ~ O(log10) 
 public:

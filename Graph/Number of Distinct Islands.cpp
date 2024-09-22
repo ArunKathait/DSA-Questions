@@ -1,3 +1,5 @@
+**********************************************APPROACH 1st(DFS)**********************************************************
+  
 
 class Solution {// TC--->O(N*M)                                  SC--->O(N*M)
   public:
@@ -75,6 +77,72 @@ class Solution {// TC--->O(N*M)                                  SC--->O(N*M)
         }
         
         // The number of distinct island shapes is the size of the set
+        return distinctIslands.size();
+    }
+};
+
+
+***************************************************APPROACH 2nd(BFS)***************************************************
+
+class Solution {
+public:
+    // Helper function to perform BFS and collect the shape of an island
+    void bfs(int row, int col, vector<vector<int>>& grid, vector<vector<int>>& visited, 
+             vector<pair<int, int>>& shape, int row0, int col0, int n, int m) {
+        // Queue for BFS, which stores the cells of the current island
+        queue<pair<int, int>> q;
+        q.push({row, col});
+        visited[row][col] = 1;
+
+        // Array to move in the 4 possible directions: up, right, down, left
+        int delRow[4] = {-1, 0, 1, 0};
+        int delCol[4] = {0, 1, 0, -1};
+
+        // Start the BFS loop
+        while (!q.empty()) 
+        {
+            int currRow = q.front().first;
+            int currCol = q.front().second;
+            q.pop();
+
+            // Store the relative position of the current cell
+            shape.push_back({row0 - currRow, col0 - currCol});
+
+            // Explore the 4 neighboring cells
+            for (int k = 0; k < 4; k++) {
+                int newRow = currRow + delRow[k];
+                int newCol = currCol + delCol[k];
+
+                // Check if the new cell is within bounds, is land (1), and has not been visited
+                if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && 
+                    !visited[newRow][newCol] && grid[newRow][newCol] == 1) {
+                    visited[newRow][newCol] = 1; // Mark the new cell as visited
+                    q.push({newRow, newCol});    // Add the new cell to the BFS queue
+                }
+            }
+        }
+    }
+
+    // Main function to count distinct islands
+    int countDistinctIslands(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+
+        vector<vector<int>> visited(n, vector<int>(m, 0));  // Keeps track of visited cells
+        set<vector<pair<int, int>>> distinctIslands;  // Stores distinct island shapes
+
+        // Iterate through each cell in the grid
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (!visited[i][j] && grid[i][j] == 1) {  // If we find unvisited land
+                    vector<pair<int, int>> shape;  // To store the shape of the current island
+                    bfs(i, j, grid, visited, shape, i, j, n, m);  // Perform BFS to find the entire island
+                    distinctIslands.insert(shape);  // Insert the island's shape into the set
+                }
+            }
+        }
+
+        // The number of distinct islands is the size of the set
         return distinctIslands.size();
     }
 };

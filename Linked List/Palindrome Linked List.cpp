@@ -77,7 +77,7 @@ public:
         // Check if the linked list is empty (head is NULL) or has only one node (head->next is NULL)
         if(head == NULL || head->next == NULL)
         {
-            // If either condition is true, return true because an empty list or a single-node list is              //  considered a palindrome
+            // If either condition is true, return true because an empty list or a single-node list is considered a palindrome
             return true;
         }
         

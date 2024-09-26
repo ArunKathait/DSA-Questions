@@ -44,7 +44,7 @@ public:
         set.insert({start,end});
         
         // Successfully booked the event, so return true.
-    }
         return true;
     }
 };
+

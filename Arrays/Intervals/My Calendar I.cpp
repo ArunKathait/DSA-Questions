@@ -1,5 +1,5 @@
 
-class MyCalendar {// TC--->O(logN)                        SC--->O(N)
+class MyCalendar {// TC--->O(NlogN)                        SC--->O(N)
 public:
     // Use a set to store the intervals of booked events. Each interval is stored as a pair (start, end).
     // The set keeps the pairs sorted based on the first value (start time) of the pair.

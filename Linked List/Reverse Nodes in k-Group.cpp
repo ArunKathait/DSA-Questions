@@ -67,7 +67,7 @@ public:
                 if(prevLast)
                 {
                     // Connect the remaining nodes without reversing
-                    prev->next = temp;
+                    prevLast->next = temp;
                 }
                 
                 // No more groups to reverse, so exit the loop

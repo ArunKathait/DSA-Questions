@@ -1,4 +1,5 @@
-
+***********************************************APPROACH 1st***********************************************************
+    
 class MyCalendar {// TC--->O(NlogN)                        SC--->O(N)
 public:
     // Use a set to store the intervals of booked events. Each interval is stored as a pair (start, end).
@@ -73,3 +74,84 @@ Conclusion:
              they do not overlap.
 
     */
+
+
+***************************************************APPROACH 2nd(OPTIMISED APPROACH)**************************************
+
+class MyCalendar {// TC--->O(N)                         SC--->O(N)
+public:
+    // Vector to store all bookings, where each booking is represented as a pair (start, end).
+    // Each pair contains the start time and end time of an event.
+    vector<pair<int,int>>bookings;
+    
+    // Constructor (doesn't need to initialize anything specific in this case).
+    MyCalendar() {
+        // The bookings vector will be empty when a new MyCalendar object is created.
+    }
+    
+    // Function to book a new event in the calendar.
+    // Takes two integers as input: 'start' (start time) and 'end' (end time) of the event.
+    bool book(int start, int end) {
+        
+        // Iterate over all existing bookings to check for overlaps.
+        for(auto &x:bookings)
+        {
+            // The condition max(x.first, start) < min(x.second, end) checks for overlap:
+            // x.first is the start time of the existing booking.
+            // x.second is the end time of the existing booking.
+            // If the maximum of the two start times is less than the minimum of the two end times,
+            // it means the time intervals overlap.
+
+            // For example:
+            // Event A: [5, 10], Event B: [7, 12]
+            // max(5, 7) < min(10, 12) --> 7 < 10 --> overlap exists, so return false.
+            if(max(x.first,start) < min(x.second,end))
+            {
+                // If there is an overlap with any existing booking, return false.
+                return false;
+            }
+        }
+        
+        // If no overlap is found with any existing booking, add the new booking.
+        // push_back() appends the new booking (start, end) to the bookings vector.
+        bookings.push_back({start,end});
+        
+        // Since the booking was successfully added, return true.
+        return true;
+    }
+};
+
+/*
+    NOTE:
+The condition max(x.first, start) < min(x.second, end) is checking if two time intervals overlap. 
+Here's a simple explanation:
+
+* x.first: This is the start time of an existing booking.
+* x.second: This is the end time of the existing booking.
+* start: This is the start time of the new booking you want to add.
+* end: This is the end time of the new booking.
+
+What does the condition mean?
+* max(x.first, start): This gives the later of the two start times (either the start time of the existing booking or the 
+start time of the new booking). It asks, "Which event starts later?"
+
+* min(x.second, end): This gives the earlier of the two end times (either the end time of the existing booking or the end 
+time of the new booking). It asks, "Which event ends sooner?"
+
+Overlap Condition:
+* If the later start time is before the earlier end time, then the two bookings overlap.
+* The condition max(x.first, start) < min(x.second, end) checks this exact situation.
+
+Example:
+(1) Existing booking: [10, 20]
+(2) New booking: [15, 25]
+
+* The later start time is max(10, 15) = 15.
+* The earlier end time is min(20, 25) = 20.
+
+Since 15 < 20, the two intervals overlap.
+
+If the condition is true (max(x.first, start) < min(x.second, end)), it means the new booking overlaps with the existing 
+one, and you should reject the new booking (return false).
+
+*/

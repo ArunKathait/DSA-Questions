@@ -32,7 +32,7 @@ public:
 
 *************************************************APPROACH 2nd(OPTIMAL APPROACH)****************************************
 
-class Solution {// TC--->O(N)                          SC--->O(1)
+class Solution {// TC--->O(N)                          SC--->O(60) ~ O(1)
 public:
     int numPairsDivisibleBy60(vector<int>& time) {
         // Get the size of the input vector 'time'

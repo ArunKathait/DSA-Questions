@@ -114,7 +114,7 @@ public:
     }
 };
 
-***************************************APPOACH 4th(TABULATION--->Better then above)******************************
+***************************************APPROACH 4th(TABULATION--->Better then above)******************************
 
 class Solution {// TC--->O(N)                           SC--->O(N)
 public:

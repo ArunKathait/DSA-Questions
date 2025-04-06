@@ -109,3 +109,66 @@ public:
 
 ********************************************APPROACH 3rd(USING TABULATION)***********************************
 
+class Solution {// TC--->O(N)                                 SC--->O(N)
+public:
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+
+        // Edge case: If there's only one house, rob it and return its value
+        if(n == 1)
+        {
+            return nums[0];
+        }
+
+        // ----------------------------
+        // Case 1: Rob houses from index 0 to n-2 (exclude last house)
+        // ----------------------------
+        // Create dp array of size n+1 and initialize all values to 0
+        vector<int>dp(n+1,0);
+
+        // No houses robbed
+        dp[0] = 0;
+        for(int i=1;i<=n-1;i++)
+        {
+            // i corresponds to nums[i-1] in the original array (0 to n-2)
+            // take: Rob the current house and add the value from two houses before
+            int take = nums[i-1] + ((i - 2 >= 0) ? dp[i-2] : 0);
+
+            // not_take: Skip the current house, take the previous max value
+            int not_take = dp[i-1];
+
+             // Choose the better option
+            dp[i] = max(take,not_take);
+         }
+
+         // Maximum money robbed when we exclude the last house
+         int ans1 = dp[n-1];
+
+         // ----------- Case 2: Rob from house 1 to n-1 (exclude first house) -----------
+         // Clear the previous dp array
+         dp.clear();
+
+         // Placeholder for no house
+         dp[0] = 0;
+
+         // First house (excluded in this case), so set to 0
+         dp[1] = 0;
+
+
+        for(int i=2;i<=n;i++)
+        {
+            // i corresponds to nums[i-1] in the original array (1 to n-1)
+            int take = nums[i-1] + ((i - 2 >= 0) ? dp[i-2] : 0);
+            int not_take = dp[i-1];
+
+            dp[i] = max(take,not_take);
+        }
+
+         // Maximum money robbed when we exclude the first house
+        int ans2 = dp[n];
+ 
+        // Return the max of both cases
+        return max(ans1,ans2);
+
+    }
+};

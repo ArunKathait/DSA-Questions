@@ -121,7 +121,8 @@ public:
             // Iterate over all possible starting points i
             for (int i = 0; i + L - 1 < n; i++) 
             {
-                int j = i + L - 1; // Ending point j based on starting i and length L
+                // Ending point j based on starting i and length L
+                int j = i + L - 1; 
 
                 // Case 1: Substring of length 1 is always a palindrome
                 if (i == j) 

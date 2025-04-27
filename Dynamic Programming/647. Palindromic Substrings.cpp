@@ -157,7 +157,7 @@ public:
 };
 
 *****************************************************APPROACH 4th(OPTIMISED)***********************************************************
-    class Solution {// TC--->O(N^2)                          SC--->O(1)
+class Solution {// TC--->O(N^2)                          SC--->O(1)
 public:
     // Helper function to expand around the center and count palindromic substrings
     void check(int i, int j, string &s, int n, int &ans)

@@ -105,3 +105,52 @@ public:
 };
 
 ********************************************APPROACH 3rd(TABULATION)*********************************************
+
+class Solution {// TC--->O(N^2)                         SC--->O(N^2)
+public:
+    int countSubstrings(string s) {
+        int n = s.length();
+        int ans = 0;
+
+        // Create a 2D DP table of size n x n, initialized with false.
+        // dp[i][j] = true if the substring s[i..j] is a palindrome
+        vector<vector<bool>> dp(n, vector<bool>(n, false));
+
+        // L is the length of the substring
+        for (int L = 1; L <= n; L++) {
+            // Iterate over all possible starting points i
+            for (int i = 0; i + L - 1 < n; i++) 
+            {
+                int j = i + L - 1; // Ending point j based on starting i and length L
+
+                // Case 1: Substring of length 1 is always a palindrome
+                if (i == j) 
+                {
+                    dp[i][j] = true;
+                }
+                // Case 2: Substring of length 2 is a palindrome if both characters are the same
+                else if (i + 1 == j) 
+                {
+                    dp[i][j] = (s[i] == s[j]);
+                }
+                // Case 3: Substring of length more than 2
+                // It's a palindrome if:
+                //  - First and last characters are same (s[i] == s[j])
+                //  - The middle part (i+1 to j-1) is also a palindrome (dp[i+1][j-1] == true)
+                else 
+                {
+                    dp[i][j] = (s[i] == s[j] && dp[i+1][j-1]);
+                }
+
+                // If current substring s[i..j] is a palindrome, increment ans
+                if (dp[i][j] == true) 
+                {
+                    ans++;
+                }
+            }
+        }
+        
+        // Return total count of palindromic substrings
+        return ans;
+    }
+};

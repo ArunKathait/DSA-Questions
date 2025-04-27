@@ -155,3 +155,43 @@ public:
         return ans;
     }
 };
+
+*****************************************************APPROACH 4th(OPTIMISED)***********************************************************
+    class Solution {// TC--->O(N^2)                          SC--->O(1)
+public:
+    // Helper function to expand around the center and count palindromic substrings
+    void check(int i, int j, string &s, int n, int &ans)
+    {
+        // Expand as long as the characters match and we stay inside bounds
+        while(i >= 0 && j < n && s[i] == s[j])
+        {
+            // Found a palindrome substring, increment count
+            ans++;
+
+            // Expand to the left   
+            i--;     
+
+            // Expand to the right
+            j++;     
+        }
+    }
+
+    int countSubstrings(string s) {
+        int n = s.length();
+        int ans = 0; // Variable to store the total number of palindromic substrings
+
+        // Iterate through each character in the string
+        for(int i = 0; i < n; i++)
+        {
+            // Check for odd length palindromes (center at i)
+            check(i, i, s, n, ans);
+
+            // Check for even length palindromes (center between i and i+1)
+            check(i, i+1, s, n, ans);
+        }
+        
+        // Return the total count
+        return ans; 
+    }
+};
+

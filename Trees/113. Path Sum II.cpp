@@ -94,6 +94,7 @@ public:
 
         // Recurse on the left subtree
         solve(root->left, sum, targetSum, temp, ans);
+        
         // Recurse on the right subtree
         solve(root->right, sum, targetSum, temp, ans);
 

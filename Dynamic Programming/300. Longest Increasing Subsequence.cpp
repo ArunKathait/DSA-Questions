@@ -101,7 +101,8 @@ public:
     class Solution {// TC--->O(N^2)                         SC--->O(N)
 public:
     int lengthOfLIS(vector<int>& nums) {
-        int n = nums.size(); // Get the size of the input array
+        // Get the size of the input array
+        int n = nums.size(); 
 
         // Initialize a DP array where dp[i] represents
         // the length of the longest increasing subsequence ending at index i.

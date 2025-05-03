@@ -95,3 +95,41 @@ public:
         return solve(0, -1, n, nums, dp);
     }
 };
+
+******************************************************APPROACH 3rd(USING TABULATION)*************************************************************
+
+    class Solution {// TC--->O(N^2)                         SC--->O(N)
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size(); // Get the size of the input array
+
+        // Initialize a DP array where dp[i] represents
+        // the length of the longest increasing subsequence ending at index i.
+        // Each element is initially 1 because each number is an LIS of at least length 1 by itself.
+        vector<int> dp(n, 1); 
+        
+        // Variable to store the overall maximum LIS found.
+        int maxLIS = 1; 
+
+        // Loop through each element in the array
+        for (int i = 0; i < n; i++) 
+        {
+            // Check all previous elements before the current element nums[i]
+            for (int j = 0; j < i; j++) 
+            {
+                // If nums[j] < nums[i], it means we can extend the increasing subsequence ending at j
+                if (nums[j] < nums[i]) 
+                {
+                    // Update dp[i] to be the maximum of its current value or dp[j] + 1
+                    dp[i] = max(dp[i], dp[j] + 1);
+
+                    // Update maxLIS if needed
+                    maxLIS = max(maxLIS, dp[i]);
+                }
+            }
+        }
+
+        // Return the length of the longest increasing subsequence found
+        return maxLIS;
+    }
+};

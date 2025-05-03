@@ -98,7 +98,7 @@ public:
 
 ******************************************************APPROACH 3rd(USING TABULATION)*************************************************************
 
-    class Solution {// TC--->O(N^2)                         SC--->O(N)
+class Solution {// TC--->O(N^2)                         SC--->O(N)
 public:
     int lengthOfLIS(vector<int>& nums) {
         // Get the size of the input array

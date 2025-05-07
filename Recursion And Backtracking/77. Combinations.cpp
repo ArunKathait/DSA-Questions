@@ -5,7 +5,8 @@ public:
     // Helper function to generate all combinations
     void solve(int index, int n, vector<int>& nums, vector<int>& temp, vector<vector<int>>& ans, int k) {
         // If we've picked exactly k elements, add the current combination to the result
-        if (temp.size() == k) {
+        if (temp.size() == k) 
+        {
             ans.push_back(temp);
             return;
         }
@@ -29,7 +30,8 @@ public:
         vector<int> nums;
 
         // Fill nums with values from 1 to n
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) 
+        {
             nums.push_back(i);
         }
 

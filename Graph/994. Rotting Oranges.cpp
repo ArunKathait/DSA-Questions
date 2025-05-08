@@ -106,3 +106,9 @@ public:
         }
     }
 };
+
+/* 
+NOTE:
+We subtract 1 from the total time because the time variable is incremented even after the last orange has rotted — giving 
+us an extra, unnecessary minute in the count.
+*/

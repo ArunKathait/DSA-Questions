@@ -1,4 +1,4 @@
-
+***********************************************APPROACH 1st(RECURSION)****************************************
 class Solution {// TC--->O(logN)                              SC--->O(logN)
 public:
     bool isPowerOfTwo(int n) {
@@ -25,5 +25,27 @@ public:
         // Recursive step: divide n by 2 and check again
         // If n is a power of two, this process will eventually reach 1
         return isPowerOfTwo(n / 2);
+    }
+};
+
+*************************************APPROACH 2nd(BIT MANIPULATION)************************************************
+
+class Solution {// TC--->O(1)                    SC--->O(1)
+public:
+    bool isPowerOfTwo(int n) {
+        // Check two conditions together:
+        // 1. n > 0  → powers of two are always positive (ignores zero and negatives)
+        // 2. (n & (n - 1)) == 0  → true only when n is a power of two
+
+        if (n > 0 && (n & (n - 1)) == 0)
+        {
+            // If both conditions are true, n is a power of two
+            return true;
+        }
+        else
+        {
+            // Otherwise, n is NOT a power of two
+            return false;
+        }
     }
 };

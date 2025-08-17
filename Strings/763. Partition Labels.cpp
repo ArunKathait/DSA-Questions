@@ -44,7 +44,7 @@ public:
             }
         }
 
-        return ans;  
         // Return all partition sizes
+        return ans;  
     }
 };

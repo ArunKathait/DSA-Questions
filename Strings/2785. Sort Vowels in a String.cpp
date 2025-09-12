@@ -51,3 +51,60 @@ public:
     }
 };
 
+************************************************APPROACH 2nd(BETTER)***********************************************
+
+class Solution {// Time Complexity: O(n)                          Space Complexity: O(1)
+public:
+    // Helper function: check if a character is a vowel
+    bool isVowel(char ch) 
+    {
+        ch = tolower(ch);  
+        // return true if ch is one of the vowels
+        return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u');
+    }
+
+    string sortVowels(string s) {
+        int n = s.length();
+
+        // Frequency map: counts how many times each vowel occurs in the string
+        unordered_map<char, int> ump;
+
+        // First pass: count the frequency of all vowels in the string
+        for (int i = 0; i < n; i++) 
+        {
+            if (isVowel(s[i])) 
+            {
+                ump[s[i]]++;
+            }
+        }
+        
+        // String with vowels in ASCII-sorted order
+        // (uppercase vowels come first in ASCII, then lowercase)
+        string Vowel = "AEIOUaeiou";
+
+        // Pointer to track which vowel to use next
+        int k = 0;
+
+        // Second pass: replace vowels in s with sorted vowels
+        for (int i = 0; i < n; i++) 
+        {
+            if (isVowel(s[i])) 
+            {
+                // Find the next vowel in sorted order that still has remaining frequency
+                while (ump[Vowel[k]] == 0) 
+                {
+                    k++;
+                }
+
+                // Place the sorted vowel into the string
+                s[i] = Vowel[k];
+
+                // Decrease its frequency since one instance is used
+                ump[Vowel[k]]--;
+            }
+        }
+
+        // Return the modified string with vowels sorted
+        return s;
+    }
+};

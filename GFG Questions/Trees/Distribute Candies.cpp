@@ -1,5 +1,5 @@
 
-class Solution {
+class Solution {// TC--->O(N)                                         SC--->O(h)--->height of the tree
   public:
     // Recursive helper function that returns the "balance" of candies for each subtree
     int solve(Node *root, int &moves)

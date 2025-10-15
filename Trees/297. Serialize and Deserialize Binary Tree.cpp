@@ -1,3 +1,4 @@
+*********************************************APPROACH 1st********************************************************
 
 class Codec {
 public:
@@ -113,6 +114,115 @@ public:
         }
 
         // Return the reconstructed root node
+        return root;
+    }
+};
+
+************************************************APPROACH 2nd*******************************************************
+
+class Codec {
+public:
+    // serialize()        TC ---> O(N)              SC ---> O(N)
+    // deserialize()      TC ---> O(N)              SC ---> O(N)
+    // Overall            TC ---> O(N)              SC ---> O(N)
+    // Function to convert a binary tree into a string representation
+    string serialize(TreeNode* root) {
+        // If the tree is empty, return an empty string
+        if (!root) 
+        {
+            return "";
+        }
+
+        string str; // This string will store the serialized output
+        queue<TreeNode*> q; // Queue for level-order traversal (BFS)
+        q.push(root); // Start with the root node
+
+        // Perform level-order traversal
+        while (!q.empty()) 
+        {
+            TreeNode* node = q.front(); // Get the current node
+            q.pop();
+
+            if (node == NULL) 
+            {
+                // If the node is NULL, represent it with '#'
+                str += "#,";
+            } 
+            else 
+            {
+                // Otherwise, add its value followed by a comma
+                str += to_string(node->val) + ",";
+                // Push its left and right children to the queue
+                // (They might be NULL, which will be handled later)
+                q.push(node->left);
+                q.push(node->right);
+            }
+        }
+        // Return the final serialized string
+        return str;
+    }
+
+    // Function to rebuild a binary tree from its string representation
+    TreeNode* deserialize(string data) {
+        // If the input string is empty, return NULL (empty tree)
+        if (data.empty())
+        {
+            return NULL;
+        } 
+
+        // Step 1: Split the input string by commas into tokens
+        vector<string> nodes; // This will store node values (and '#')
+        string token = "";
+        for (char c : data) 
+        {
+            if (c == ',') 
+            {
+                // When comma found, push current token to vector
+                nodes.push_back(token);
+                token = ""; // Reset token for next value
+            } 
+            else 
+            {
+                token += c; // Build up the current token
+            }
+        }
+
+        // Step 2: Create the root node from the first element
+        int index = 0; // Index to track current position in 'nodes' vector
+        TreeNode* root = new TreeNode(stoi(nodes[index++])); // Create root
+        queue<TreeNode*> q; // Queue for BFS reconstruction
+        q.push(root);
+
+        // Step 3: Build the tree using level-order logic
+        while (!q.empty()) 
+        {
+            TreeNode* node = q.front(); // Get current node from queue
+            q.pop();
+
+            // Process left child
+            if (index < nodes.size()) {
+                if (nodes[index] != "#") 
+                {
+                    // If not '#', create left child node
+                    node->left = new TreeNode(stoi(nodes[index]));
+                    q.push(node->left); // Add to queue for further processing
+                }
+                index++; // Move to next token
+            }
+
+            // Process right child
+            if (index < nodes.size()) {
+                if (nodes[index] != "#") 
+                {
+                    // If not '#', create right child node
+                    node->right = new TreeNode(stoi(nodes[index]));
+                    q.push(node->right); // Add to queue for further processing
+                }
+                index++; // Move to next token
+            }
+        }
+
+        // Step 4: Return the rebuilt root node
         return root;
     }
 };

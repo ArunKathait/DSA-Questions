@@ -129,3 +129,69 @@ public:
         return solve(row, column, n, k, dp);
     }
 };
+
+******************************************************APPROACH 3rd(USING MAP FOR MEMOIZATION)***************************************************
+
+class Solution {
+public:
+    // Recursive helper function that calculates probability
+    // of knight staying on board starting from (row, col) with k moves left
+    double solve(int row, int col, int n, int k, map<string,double>& dp) {
+
+        // 🧩 Base Case 1: If knight goes outside the board
+        if(row < 0 || col < 0 || row >= n || col >= n)
+        {
+            return 0;
+        }
+
+        // 🧩 Base Case 2: If no moves are left (k == 0),
+        // the knight is still on the board → probability = 1
+        if(k == 0)
+        {
+            return 1;
+        }
+
+        // ⚡ Memoization key: uniquely identify each state
+        // Format: "row-col-k"
+        string key = to_string(row) + "-" + to_string(col) + "-" + to_string(k);
+
+        // ⚡ Check if this state is already computed
+        if(dp.find(key) != dp.end())
+        {
+            return dp[key];
+        }
+
+        // ♞ Knight's 8 possible moves
+        vector<int> delRow = {-2, -2, -1, 1, 2, 2, 1, -1};
+        vector<int> delCol = {-1, 1, 2, 2, 1, -1, -2, -2};
+
+        // 🧮 Variable to accumulate total probability from all 8 moves
+        double ans = 0;
+
+        // 🔁 Explore all 8 possible knight moves
+        for(int i = 0; i < 8; i++) 
+        {
+            int newRow = row + delRow[i];  // new row after knight move
+            int newCol = col + delCol[i];  // new column after knight move
+
+            // Recursively calculate probability from new position
+            // Each move has equal chance = 1/8
+            ans += solve(newRow, newCol, n, k-1, dp) / 8.0;
+        }
+
+        // 💾 Store computed probability in map to avoid recomputation
+        dp[key] = ans;
+
+        // 🔙 Return probability for current state
+        return ans;
+    }
+
+    // Main function: entry point
+    double knightProbability(int n, int k, int row, int column) {
+        // 🗺️ Map for memoization: stores probability of each (row,col,k)
+        map<string,double> dp;
+
+        // 🚀 Start recursion from initial knight position (row,column) with k moves
+        return solve(row, column, n, k, dp);
+    }
+};

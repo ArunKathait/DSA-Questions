@@ -94,3 +94,49 @@ public:
         return head;
     }
 };
+
+*********************************************APPROACH 3rd*************************************************************
+    
+class Solution {// TC ---> O(N + M)                         SC ---> O(N)
+public:
+    ListNode* modifiedList(vector<int>& nums, ListNode* head) {
+        // Create an unordered_set from the 'nums' vector for O(1) lookups
+        // This set will contain all the values that need to be removed from the linked list
+        unordered_set<int> set(nums.begin(), nums.end());
+
+        // Create a dummy node to simplify list modifications
+        // It acts as a new head before the actual head of the result list
+        ListNode *dummy = new ListNode();
+
+        // 'temp' is a pointer that will help us build the new list
+        ListNode *temp = dummy;
+
+        // Traverse through the original linked list
+        while (head != NULL)
+        {
+            int val = head->val;  // Get current node's value
+
+            // Check if this value should NOT be removed
+            if (set.find(val) == set.end())  // if 'val' is NOT in the set
+            {
+                // Link this node to the new list
+                temp->next = head;
+
+                // Move 'temp' pointer ahead to the newly added node
+                temp = temp->next;
+            }
+
+            // Move to the next node in the original list
+            head = head->next;
+        }
+        
+        // After processing all nodes, ensure the new list properly terminates
+        // This step is IMPORTANT — it breaks any old 'next' links that might still exist
+        temp->next = NULL;
+
+        // The first real node of the modified list is dummy->next
+        // Return it as the head of the new list
+        return dummy->next;
+    }
+};
+

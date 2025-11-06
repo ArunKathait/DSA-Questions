@@ -71,70 +71,58 @@ public:
 class Solution {// TC ---> O(N^2)                                   SC ---> O(N)
 public:
     vector<int> largestDivisibleSubset(vector<int>& nums) {
-        // Get total number of elements in the input array
+        // Number of elements in the array
         int n = nums.size();  
 
-        // Sort the array in ascending order
-        // Sorting helps because if nums[i] % nums[j] == 0, then nums[i] >= nums[j].
+        // Step 1️⃣: Sort the array to ensure that if nums[i] % nums[j] == 0,
+        // then i > j (helps in forming subsets correctly)
         sort(nums.begin(), nums.end());
 
-        // dp[i] will store the length of the largest divisible subset ending at index i
+        // dp[i] stores the length of the largest divisible subset ending at index i
         vector<int> dp(n, 1);
 
-        // previousIndex[i] stores the index of the previous element
-        // that is part of the subset ending at nums[i]
-        // (used later to reconstruct the subset)
+        // previousIndex[i] stores the index of the previous element in the subset chain
+        // This helps in reconstructing the actual subset later
         vector<int> previousIndex(n, -1);
 
-        // Variables to keep track of the maximum subset length found so far
-        int maxLength = 1;
+        // Variables to keep track of the overall longest subset
+        int maxLength = 1;         // Length of longest divisible subset
+        int lastTakenIndex = 0;    // Index where that subset ends
 
-        // And the index of the last element of that subset
-        int lastTakenIndex = 0;
-
-        // Start looping through the array to fill dp[]
+        // Step 2️⃣: Build the dp table
         for (int i = 1; i < n; i++) 
         {
-            // For each nums[i], check all previous elements nums[j]
             for (int j = 0; j < i; j++) 
             {
-                // If nums[i] is divisible by nums[j],
-                // then nums[i] can be added after nums[j] in a divisible subset
+                // Check if current element nums[i] can be appended to subset ending at nums[j]
                 if (nums[i] % nums[j] == 0) 
                 {
-                    // If including nums[i] after nums[j] forms a longer subset
+                    // If adding nums[i] gives a longer subset, update dp[i] and link the chain
                     if (dp[i] < dp[j] + 1) 
                     {
-                        dp[i] = dp[j] + 1;         // Update the length of subset ending at i
-                        previousIndex[i] = j;      // Store the link to previous index j
+                        dp[i] = dp[j] + 1;      // Update the length
+                        previousIndex[i] = j;   // Store previous element index
+                    }
+
+                    // ✅ Check if we found a new longest subset
+                    if (dp[i] > maxLength) 
+                    {
+                        maxLength = dp[i];        // Update max length
+                        lastTakenIndex = i;       // Mark where the chain ends
                     }
                 }
             }
-
-            // Update the maximum length and last index of the best subset found so far
-            if (dp[i] > maxLength) 
-            {
-                // Update maxLength to the current best length
-                maxLength = dp[i];             
-
-                // Store the index i — this index will be used later
-                // to backtrack the actual subset elements (starting from this element)
-                lastTakenIndex = i;
-            }
         }
 
-        // Reconstruct the subset from the information stored in previousIndex[]
+        // Step 3️⃣: Reconstruct the largest divisible subset using previousIndex[]
         vector<int> ans;
-
-        // Start from the last element of the largest subset
         while (lastTakenIndex != -1) 
         {
-            ans.push_back(nums[lastTakenIndex]);  // Add current element to result
-            lastTakenIndex = previousIndex[lastTakenIndex];  // Move to the previous element
+            ans.push_back(nums[lastTakenIndex]);       // Add current element to answer
+            lastTakenIndex = previousIndex[lastTakenIndex]; // Move to previous element
         }
-
-        // The subset is constructed in reverse order (from last to first)
-        // but order doesn’t matter, so we can return it directly.
-        return ans;
+        
+        // Return the final largest divisible subset
+        return ans;  
     }
 };

@@ -1,5 +1,5 @@
 
-class Solution {
+class Solution {// TC ---> O(k)                                                 SC ---> O(1)
 public:
     int smallestRepunitDivByK(int k) {
         
@@ -34,3 +34,19 @@ public:
         return -1;
     }
 };
+
+/* 
+        NOTE:
+        
+        ✅ Short Explanation (Easy to Remember)
+
+        1) You want the smallest number made of only 1s that is divisible by k.
+
+        2) Instead of building the full number (like 1, 11, 111… which becomes huge),
+           you only track the remainder.
+
+        3) If remainder becomes 0, the number is divisible.
+
+        4) At most k different remainders are possible — if it doesn't become 0 within k steps, it will never become 0 (pigeonhole principle).
+
+    */

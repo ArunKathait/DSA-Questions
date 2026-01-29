@@ -236,3 +236,51 @@ public:
         return dp[n][m];
     }
 };
+
+********************************************************APPROACH 5th(TABULATION MINOR CHANGE)******************************
+
+class Solution {
+  public:
+    int minDistance(string word1, string word2) {
+        int n = word1.length();
+        int m = word2.length();
+        
+        // dp[i][j] = minimum operations to convert word1[0..i-1] to word2[0..j-1]
+        vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
+        
+        // Fill DP table bottom-up
+        for(int i = 0; i <= n; i++) 
+        {
+            for(int j = 0; j <= m; j++) 
+            {
+                // Base case: first string is empty → need j insertions
+                if(i == 0) 
+                {
+                    dp[i][j] = j;
+                }
+                // Base case: second string is empty → need i deletions
+                else if(j == 0) 
+                {
+                    dp[i][j] = i;
+                }
+                // If last characters match → no operation needed
+                else if(word1[i-1] == word2[j-1]) 
+                {
+                    dp[i][j] = dp[i-1][j-1];
+                }
+                // If characters differ → consider insert, delete, replace
+                else 
+                {
+                    int insertOp = 1 + dp[i][j-1];    // Insert last char of word2
+                    int deleteOp = 1 + dp[i-1][j];    // Delete last char of word1
+                    int replaceOp = 1 + dp[i-1][j-1]; // Replace last char
+
+                    dp[i][j] = min(insertOp, min(deleteOp, replaceOp));
+                }
+            }
+        }
+
+        // dp[n][m] = minimum operations to convert word1 → word2
+        return dp[n][m];
+    }
+};

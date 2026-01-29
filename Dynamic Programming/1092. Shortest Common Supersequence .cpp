@@ -185,6 +185,7 @@ class Solution {// TC ---> O(n × m)                           SC ---> O(n × m)
 };
 
 *****************************************************APPROACH 4th(TABULATION)*****************************************
+// LCS Tabulation Used here.
 
 class Solution {
 public:
@@ -230,7 +231,7 @@ public:
 
 
 ****************************************************APPROACH 5th(TABULATION)*****************************************
-// LCS Used
+// LCS Tabulation Used Here
 class Solution {
   public:
     int minSuperSeq(string &s1, string &s2) {

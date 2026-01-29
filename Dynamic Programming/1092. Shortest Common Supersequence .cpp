@@ -184,6 +184,91 @@ class Solution {// TC ---> O(n × m)                           SC ---> O(n × m)
     }
 };
 
+*****************************************************APPROACH 4th(TABULATION)*****************************************
+
+class Solution {
+public:
+    // Function to find length of Shortest Common Supersequence (SCS)
+    int minSuperSeq(string &s1, string &s2) {
+        int n = s1.length();
+        int m = s2.length();
+
+        // dp[i][j] stores length of Longest Common Subsequence (LCS)
+        vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
+
+        // Build the LCS table in bottom-up manner
+        for(int i = 0; i <= n; i++) 
+        {
+            for(int j = 0; j <= m; j++) 
+            {
+                // Base case: if either string is empty, LCS = 0
+                if(i == 0 || j == 0) 
+                {
+                    dp[i][j] = 0;
+                }
+                // If last characters match, include it and move diagonally
+                else if(s1[i-1] == s2[j-1]) 
+                {
+                    dp[i][j] = 1 + dp[i-1][j-1];
+                }
+                // If last characters differ, take max ignoring one character
+                else 
+                {
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+                }
+            }
+        }
+
+        int LCS = dp[n][m];           // Length of Longest Common Subsequence
+        int letters_from_s1 = n - LCS;
+        int letters_from_s2 = m - LCS;
+
+        // Total SCS length = LCS + remaining letters from both strings
+        return LCS + letters_from_s1 + letters_from_s2;
+    }
+};
+
+
+****************************************************APPROACH 5th(TABULATION)*****************************************
+// LCS Used
+class Solution {
+  public:
+    int minSuperSeq(string &s1, string &s2) {
+        int n = s1.length();
+        int m = s2.length();
+        
+        // dp[i][j] will store length of LCS for s1[0..i-1] and s2[0..j-1]
+        vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
+        
+        for(int i = 0; i <= n; i++) 
+        {
+            for(int j = 0; j <= m; j++) 
+            {
+                // Base case: if either string is empty, LCS = 0
+                if(i == 0 || j == 0) 
+                {
+                    dp[i][j] = 0;
+                }
+                // If last characters match, include it and move diagonally
+                else if(s1[i-1] == s2[j-1]) 
+                {
+                    dp[i][j] = 1 + dp[i-1][j-1];
+                }
+                // If last characters differ, take max ignoring one character
+                else 
+                {
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+                }
+            }
+        }
+        
+        int LCS = dp[n][m];          // Longest Common Subsequence length
+        int ans = (n + m) - LCS;     // SCS length = n + m - LCS
+        return ans;
+    }
+};
+
+
 **************************************************(PRINT SCS --> LEETCODE QUESTION)************************************
 
 // NOTE : In above code we are finding SCS but here we have to print LCS which is asked in leetcode question.

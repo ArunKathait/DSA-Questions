@@ -101,3 +101,50 @@ public:
 };
 
 **********************************************APPROACH 3rd(USING TABULATION)****************************************
+
+class Solution {// TC ---> O(n × m)                           SC ---> O(n × m)
+  public:
+    int longestCommonSubsequence(string &s1, string &s2) {
+        int n = s1.length();
+        int m = s2.length();
+        
+        // dp[i][j] = length of LCS for s1[0..i-1] and s2[0..j-1]
+        vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
+        
+        // Fill DP table in bottom-up manner
+        for(int i = 0; i <= n; i++) 
+        {
+            for(int j = 0; j <= m; j++) 
+            {
+                // Base case: if either string is empty, LCS length = 0
+                if(i == 0 || j == 0) 
+                {
+                    dp[i][j] = 0;
+                }
+
+                // If last characters match, include it and move diagonally
+                else if(s1[i-1] == s2[j-1]) 
+                {
+                    dp[i][j] = 1 + dp[i-1][j-1];
+                }
+
+                // If last characters don't match, take the maximum ignoring one character
+                else 
+                {
+                    int takeFromS1 = dp[i-1][j];
+                    int takeFromS2 = dp[i][j-1];
+                    
+                    dp[i][j] = max(takeFromS1, takeFromS2);
+                }
+            }
+        }
+        
+        // dp[n][m] contains the length of LCS for full strings
+        return dp[n][m];
+    }
+};
+    
+    
+    
+    
+    

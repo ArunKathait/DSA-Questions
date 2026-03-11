@@ -1,3 +1,7 @@
+/*
+Time  : O(log n)   (number of bits)
+Space : O(1)
+*/
 
 class Solution {
 public:

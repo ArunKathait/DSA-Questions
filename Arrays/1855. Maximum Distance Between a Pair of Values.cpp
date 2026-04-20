@@ -1,5 +1,5 @@
 
-class Solution {
+class Solution {// TC ---> O(n + m)                                        SC ---> O(1)
 public:
     int maxDistance(vector<int>& nums1, vector<int>& nums2) {
 

@@ -1,5 +1,5 @@
 
-class Solution {
+class Solution {// TC ---> O(n log n)                                           SC ---> O(1)
 public:
     int findMinArrowShots(vector<vector<int>>& points) {
 

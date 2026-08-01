@@ -1,5 +1,5 @@
 
-class MedianFinder {// TC ---> 
+class MedianFinder {
 public:
 
     // Max Heap

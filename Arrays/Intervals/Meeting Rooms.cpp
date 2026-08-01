@@ -1,4 +1,4 @@
-class Solution {
+class Solution {// TC ---> O(n log n)                                     SC ---> O(1)
 public:
     bool canAttend(vector<vector<int>> &arr) {
 

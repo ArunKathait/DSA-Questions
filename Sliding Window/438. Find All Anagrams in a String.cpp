@@ -1,5 +1,5 @@
 
-class Solution {
+class Solution { // TC ---> O(N)                           SC ---> O(26) ~ O(1)
 public:
 
     vector<int> findAnagrams(string s, string p) {

@@ -52,7 +52,8 @@ public:
     }
 };
 
-*/ NOTE : 
+/*
+NOTE : 
 
 n % 10  → get last digit
 n /= 10 → remove last digit

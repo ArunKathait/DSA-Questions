@@ -129,6 +129,38 @@ public:
     }
 };
 
+/*
+
+┌─────────────────────────────────────────┐
+│          COIN CHANGE — DP               │
+├─────────────────────────────────────────┤
+│ Approach : Top-Down DP / Memoization    │
+│                                         │
+│ State : dp[index][amount]               │
+│                                         │
+│ TAKE:                                   │
+│   1 + solve(index, amount - coin)       │
+│   → Same index (coin can repeat)        │
+│                                         │
+│ NOT TAKE:                               │
+│   solve(index + 1, amount)              │
+│   → Move to next coin                   │
+│                                         │
+│ Base Cases:                             │
+│   amount == 0 → 0                       │
+│   index >= n / amount < 0 → INF         │
+│                                         │
+│ Answer = min(TAKE, NOT TAKE)            │
+│                                         │
+│ Time  : O(n × amount)                   │
+│ Space : O(n × amount)                   │
+│                                         │
+│ KEY: TAKE → same index                  │
+│      NOT TAKE → index + 1               │
+└─────────────────────────────────────────┘
+
+*/
+
 *************************************************APPROACH 3rd(USING TABULATION)**************************************
 
 class Solution {// TC ---> O(n × amount)                                           SC ---> O(amount)
@@ -169,3 +201,35 @@ public:
         return dp[amount] >= 1e9 ? -1 : dp[amount];
     }
 };
+
+/*
+
+┌─────────────────────────────────────────┐
+│       COIN CHANGE — TABULATION          │
+├─────────────────────────────────────────┤
+│ Approach : Bottom-Up 1D DP              │
+│                                         │
+│ State:                                  │
+│ dp[i] = minimum coins to make i         │
+│                                         │
+│ Base:                                   │
+│ dp[0] = 0                               │
+│                                         │
+│ Transition:                             │
+│ dp[i] = min(dp[i], dp[i-coin] + 1)      │
+│                                         │
+│ Loop:                                   │
+│ i = 1 → amount                          │
+│ Try every coin                          │
+│                                         │
+│ If impossible → -1                      │
+│                                         │
+│ Time  : O(n × amount)                   │
+│ Space : O(amount)                       │
+│                                         │
+│ KEY:                                    │
+│ "Current amount = smaller amount        │
+│  + 1 coin"                              │
+└─────────────────────────────────────────┘
+
+*/

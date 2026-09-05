@@ -186,3 +186,24 @@ public:
         return -1;
     }
 };  
+
+/*
+
+┌────────────────────────────────────┐
+│       PREFIX MAX + SUFFIX MIN      │
+├────────────────────────────────────┤
+│ Approach : Prefix + Suffix         │
+│                                    │
+│ Time  : O(n)                       │
+│ Space : O(n)                       │
+│                                    │
+│ Prefix Max → LEFT → RIGHT          │
+│ Suffix Min → RIGHT → LEFT          │
+│                                    │
+│ Condition:                         │
+│ prefixMax - suffixMin[i] <= k      │
+│                                    │
+│ Return FIRST valid index           │
+└────────────────────────────────────┘
+
+*/

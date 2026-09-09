@@ -222,3 +222,78 @@ n
 ≥ 1000000000 → +1 more comma
 
 */
+
+**************************************************APPROACH 3rd(OPTIMAL AND EASY)**************************************
+
+#define ll long long
+
+class Solution {// Time  → O(log n)                                Space → O(1)
+public:
+
+    long long countCommas(long long n) {
+
+        // 'll' is just a shortcut for 'long long'
+        //
+        // So:
+        // ll ans = 0;
+        //
+        // is the same as:
+        // long long ans = 0;
+        //
+        // 'ans' stores the total number of commas.
+        ll ans = 0;
+
+
+        // We start from 1000 because:
+        //
+        // 1 to 999
+        //     -> no commas
+        //
+        // 1000 to ...
+        //     -> at least one comma
+        //
+        // We multiply i by 1000 after every iteration
+        // to move to the next comma position.
+        //
+        // i values:
+        //
+        // 1000
+        // 1000000
+        // 1000000000
+        // 1000000000000
+        // ...
+        //
+        for(ll i = 1000; i <= n; i *= 1000)
+        {
+
+            // Count how many numbers are from 'i' to 'n'.
+            //
+            // Number of integers in the range [i, n]:
+            //
+            // n - i + 1
+            //
+            // Example:
+            //
+            // n = 1005
+            // i = 1000
+            //
+            // Numbers are:
+            //
+            // 1000, 1001, 1002, 1003, 1004, 1005
+            //
+            // Count:
+            //
+            // 1005 - 1000 + 1 = 6
+            //
+            // Every one of these numbers has at least
+            // one comma.
+            //
+            // Therefore, add 6 to the answer.
+            ans += (n - i + 1);
+        }
+
+
+        // Return the total number of commas.
+        return ans;
+    }
+};

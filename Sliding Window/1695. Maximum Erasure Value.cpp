@@ -75,3 +75,35 @@ public:
         return ans;
     }
 };
+
+/*
+
+╔══════════════════════════════════════════════╗
+║       MAXIMUM UNIQUE SUBARRAY — 1695         ║
+╠══════════════════════════════════════════════╣
+║ 🎯 Goal: MAXIMUM SUM of unique elements     ║
+║                                              ║
+║ Pattern: Sliding Window + HashSet            ║
+║                                              ║
+║ Window [i...j] → only UNIQUE elements        ║
+║                                              ║
+║ If nums[j] is unique:                        ║
+║ → Add nums[j] to set and sum                 ║
+║                                              ║
+║ If nums[j] is duplicate:                     ║
+║ → Remove nums[i] from set and sum            ║
+║ → Move i until duplicate is removed          ║
+║                                              ║
+║ Maintain:                                    ║
+║ set → elements in current window             ║
+║ sum → current window sum                     ║
+║ ans → maximum sum found                      ║
+║                                              ║
+║ ⭐ Duplicate → shrink LEFT                  ║
+║ ⭐ Unique → expand RIGHT                    ║
+║                                              ║
+║ TC: O(N) average                             ║
+║ SC: O(N)                                     ║
+╚══════════════════════════════════════════════╝
+
+*/

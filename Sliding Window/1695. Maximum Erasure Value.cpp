@@ -1,5 +1,5 @@
 
-class Solution {// TC ---> O(N)                           SC ---> O(1)
+class Solution {// TC ---> O(N)                           SC ---> O(N)
 public:
     int maximumUniqueSubarray(vector<int>& nums) {
 

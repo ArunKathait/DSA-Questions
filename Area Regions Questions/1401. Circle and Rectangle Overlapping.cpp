@@ -130,8 +130,8 @@ public:
 │                                            │
 │ distance² = dx² + dy²                      │
 │                                            │
-│ distance² <= radius² → OVERLAP ✅          │
-│ distance² >  radius² → NO OVERLAP ❌       │
+│ distance² <= radius² → OVERLAP             │
+│ distance² >  radius² → NO OVERLAP          │
 │                                            │
 │ TC: O(1)                                   │
 │ SC: O(1)                                   │

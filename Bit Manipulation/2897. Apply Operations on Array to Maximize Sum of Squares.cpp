@@ -1,5 +1,5 @@
 
-class Solution {// Time Complexity:O(32n + 32k) = O(n+k))     Space Complexity: O(32) = O(1)
+class Solution {// Time Complexity:O(32n + 32k) = O(n+k)     Space Complexity: O(32) = O(1)
 public:
     int M = 1e9 + 7;
 

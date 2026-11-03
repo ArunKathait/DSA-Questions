@@ -47,8 +47,6 @@ public:
 │ This logic applies when one move increments          │
 │ exactly ONE element by 1.                            │
 │                                                      │
-│ LeetCode 453 increments n-1 elements per move,       │
-│ so it uses the minimum element instead.              │
 └──────────────────────────────────────────────────────┘
 
 */

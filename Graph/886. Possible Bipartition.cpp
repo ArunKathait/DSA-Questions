@@ -111,60 +111,96 @@ public:
 class Solution {// TIME COMPLEXITY:  O(n + m)                  SPACE COMPLEXITY: O(n + m)
 public:
 
-    bool bfs(int node,unordered_map<int,vector<int>>&adj,vector<int>&color)
+    // BFS function checks whether the connected component
+    // starting from 'node' can be divided into two groups.
+    bool bfs(int node, unordered_map<int, vector<int>>& adj, vector<int>& color)
     {
-        queue<int>q;
+        // Queue is used to perform BFS traversal.
+        queue<int> q;
 
+        // Insert the starting node into the queue.
         q.push(node);
+
+        // Assign the starting node to Group 1.
         color[node] = 1;
 
+        // Continue BFS until the queue becomes empty.
         while(!q.empty())
         {
-            auto node = q.front();
+            // Get the front node from the queue.
+            int currentNode = q.front();
             q.pop();
 
-            for(auto &neighbor:adj[node])
+            // Traverse all neighbors of the current node.
+            for(auto &neighbor : adj[currentNode])
             {
-                if(color[node] == color[neighbor])
+                // If both adjacent nodes have the same color,
+                // they belong to the same group.
+                // This is not allowed, so return false.
+                if(color[currentNode] == color[neighbor])
                 {
                     return false;
                 }
+
+                // If the neighbor has not been visited yet.
                 else if(color[neighbor] == -1)
                 {
-                    color[neighbor] = 1 - color[node];
+                    // Assign the opposite color to the neighbor.
+                    // If currentNode has color 1, neighbor gets 0.
+                    // If currentNode has color 0, neighbor gets 1.
+                    color[neighbor] = 1 - color[currentNode];
+
+                    // Add the neighbor to the queue for BFS traversal.
                     q.push(neighbor);
                 }
             }
         }
 
+        // No conflict was found in this connected component.
         return true;
     }
 
     bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
-        unordered_map<int,vector<int>>adj;
 
-        for(auto &x:dislikes)
+        // Create an adjacency list to represent the graph.
+        // Each person is a node, and dislike relationships are edges.
+        unordered_map<int, vector<int>> adj;
+
+        // Build an undirected graph from the dislikes array.
+        for(auto &x : dislikes)
         {
             int u = x[0];
             int v = x[1];
 
+            // If u dislikes v, add an edge from u to v.
             adj[u].push_back(v);
+
+            // Since the graph is undirected, add the reverse edge too.
             adj[v].push_back(u);
         }
 
-        vector<int>color(n+1,-1);
+        // -1 means unvisited.
+        // 0 and 1 represent the two different groups.
+        vector<int> color(n + 1, -1);
 
-        for(int i=1;i<=n;i++)
+        // Check every person because the graph may have
+        // multiple disconnected components.
+        for(int i = 1; i <= n; i++)
         {
+            // If the person has not been visited yet,
+            // start BFS from that person.
             if(color[i] == -1)
             {
-                if(bfs(i,adj,color) == false)
+                // If BFS detects a conflict, bipartition is impossible.
+                if(bfs(i, adj, color) == false)
                 {
                     return false;
                 }
             }
         }
 
+        // All connected components were successfully divided
+        // into two groups without any conflicts.
         return true;
     }
 };
